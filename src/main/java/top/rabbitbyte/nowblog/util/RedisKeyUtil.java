@@ -1,5 +1,7 @@
 package top.rabbitbyte.nowblog.util;
 
+import org.springframework.web.servlet.tags.EditorAwareTag;
+
 public class RedisKeyUtil {
 
     private static final String SPLIT = ":";
@@ -10,6 +12,9 @@ public class RedisKeyUtil {
     private static final String PREFIX_KAPTCHA = "kaptcha";
     private static final String PREFIX_TICKET = "ticket";
     private static final String PREFIX_USER = "user";
+    private static  final String PREFIX_UV= "uv";
+
+    private static  final String PREFIX_DAU= "dau";
 
     // 某个实体的赞
     // like:entity:entityType:entityId -> set(userId)
@@ -48,5 +53,22 @@ public class RedisKeyUtil {
     // 用户
     public static String getUserKey(int userId) {
         return PREFIX_USER + SPLIT + userId;
+    }
+
+    //单日uv
+    public static String getUVKey(String  date ){
+        return PREFIX_UV+SPLIT+date;
+    }
+    //区间uv
+    public static String getUVKey(String startdate,String enddate){
+        return PREFIX_UV + SPLIT + startdate + SPLIT+ enddate;
+    }
+    //获取dau
+    public static String getDAUKey(String date){
+        return PREFIX_DAU + SPLIT + date;
+    }
+    //获取区间dau
+    public static String getDAUKey(String startdate,String enddate){
+        return PREFIX_DAU + SPLIT + startdate + SPLIT + enddate;
     }
 }

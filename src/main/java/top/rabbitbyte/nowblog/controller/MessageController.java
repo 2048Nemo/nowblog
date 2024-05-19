@@ -272,5 +272,4 @@ public class MessageController implements CommunityConstant {
 
         return "/site/notice-detail";
     }
-
 }
